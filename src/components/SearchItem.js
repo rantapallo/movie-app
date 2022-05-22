@@ -33,7 +33,7 @@ export default function SearchItem({item}) {
         <div className='list-image'>
           <img 
             src={`https://www.themoviedb.org/t/p/w94_and_h141_face${imagePath}`}
-            alt="image not available"
+            alt="not available"
           />
         </div>
         <div className='list-text'>

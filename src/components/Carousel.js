@@ -37,7 +37,7 @@ export default function Carousel({data}) {
                   <div className="carousel-image">
                     <img 
                       src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`}
-                      alt="image not found"
+                      alt="not available"
                     />
                   </div>
                   <p>{item.name}</p>
@@ -49,7 +49,7 @@ export default function Carousel({data}) {
                     <div className="carousel-image">
                       <img 
                         src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`}
-                        alt="image not found"
+                        alt="not available"
                       />
                     </div>
                     <p>{item.title}</p>
@@ -60,7 +60,7 @@ export default function Carousel({data}) {
                     <div className="carousel-image">
                       <img 
                         src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.profile_path}`}
-                        alt="image not found"
+                        alt="not available"
                       />
                     </div>
                     <p>{item.name}</p>

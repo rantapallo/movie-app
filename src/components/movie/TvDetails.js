@@ -7,7 +7,7 @@ export default function MovieDetails({movie, directors}) {
         <div className="carousel-image">
           <img 
             className="details-image"
-            alt="image not available"
+            alt="not available"
             src={`https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`}
           />
         </div>

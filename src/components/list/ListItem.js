@@ -11,7 +11,7 @@ const TopListItem = ({movie, index}) => {
           <div className="list-image">
             <img 
               className="movie-poster-tiny"
-              alt="image not available"
+              alt="not available"
               src={`https://www.themoviedb.org/t/p/w94_and_h141_face${movie.poster_path}`}
             />
           </div>

@@ -5,7 +5,7 @@ export default function PersonDetails({person}) {
     <div className='details-top pd40'>
       <img 
         className="profile-image"
-        alt="not found"
+        alt="not available"
         src={`https://www.themoviedb.org/t/p/w300_and_h450_face${person.profile_path}`}
       />
       <div className='details-text'>
