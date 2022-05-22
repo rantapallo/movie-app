@@ -30,7 +30,7 @@ export default function Movie() {
       }
       listDirectors()
     }
-  },[movie])
+  },[movie, directors])
 
   return (
     <div className='details section'>
