@@ -81,7 +81,7 @@ export default function PersonCredits({credits}) {
     
     const handledCast = handleJobs(credits.cast)
     setCast(handledCast)
-  }, [credits])
+  }, [credits, handleJobs])
 
   return ( 
     <div className="details-person-credits">

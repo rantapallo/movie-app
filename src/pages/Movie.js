@@ -29,7 +29,7 @@ export default function Movie() {
     if (movie) {
       listDirectors()
     }
-  },[movie])
+  },[movie, listDirectors])
 
   return (
     <div className='details section'>

@@ -1,6 +1,5 @@
 import Carousel from '../components/Carousel';
 import Search from '../components/Search';
-import Header from '../components/Header';
 import useFetch from '../util/useFetch'
 
 export default function Home() {
@@ -8,9 +7,9 @@ export default function Home() {
   const apiKey = process.env.REACT_APP_APIKEY;
   const { data: movies, isLoading: movieIsLoading, error: movieError} = useFetch('https://api.themoviedb.org/3/trending/movie/week?api_key='+apiKey)
   const { data: tv, isLoading: tvIsLoading, error: tvError} = useFetch('https://api.themoviedb.org/3/trending/tv/week?api_key='+apiKey)
-  const { data: discover, isLoading: discoverIsLoading, error: discoverError} = useFetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2022&with_watch_monetization_types=flatrate`
-  )
+  // const { data: discover, isLoading: discoverIsLoading, error: discoverError} = useFetch(
+  //   `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2022&with_watch_monetization_types=flatrate`
+  // )
 
   return (
     <div>
