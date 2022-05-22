@@ -18,18 +18,19 @@ export default function Movie() {
     `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${apiKey}`
   );
 
-  const listDirectors = async () => {
-    await movie.credits.crew.map((credit) => (
-      credit.job === 'Director'  && !directors.some(item => item.id === credit.id) ? 
-        setDirectors(director => [...director, {'name':credit.name, 'id':credit.id}]) : ''
-    ))
-  }
+  
 
   useEffect(() => {
     if (movie) {
+      const listDirectors = async () => {
+        await movie.credits.crew.map((credit) => (
+          credit.job === 'Director'  && !directors.some(item => item.id === credit.id) ? 
+            setDirectors(director => [...director, {'name':credit.name, 'id':credit.id}]) : ''
+        ))
+      }
       listDirectors()
     }
-  },[movie, listDirectors])
+  },[movie])
 
   return (
     <div className='details section'>

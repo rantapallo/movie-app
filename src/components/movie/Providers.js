@@ -15,7 +15,7 @@ const Providers = ({providers}) => {
           <div className="providers-name">{provider.provider_name}</div>
         </div>
       ))
-    : 'Not found'
+    : ''
     }
     </div>
    );

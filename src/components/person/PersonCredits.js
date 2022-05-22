@@ -17,25 +17,7 @@ export default function PersonCredits({credits}) {
     return sortedJobs
   }
 
-  const handleJobs = (crew) => {
-    // change tv series first_air_date to release_date to match with movies
-    let newJob = crew.map(({
-      first_air_date: release_date,
-      ...rest
-    }) => ({
-      release_date,
-      ...rest
-    }))
 
-    // some series/movies missing release date
-    newJob.forEach((e) => {
-      if (!e.release_date) {
-        e.release_date = "1900-01-01";
-      }
-    })
-    const sortedJob = sortJobs(newJob)
-    return sortedJob
-  }
 
   const splitJobs = (sortedCrew) => {
     sortedCrew.forEach((job) => {
@@ -70,18 +52,40 @@ export default function PersonCredits({credits}) {
             return [...prevCreator, job]
           })
           break
+        default:
+        break
       }
     })
   }
 
   useEffect(() => {
     // movielist in api in random order
+    const handleJobs = (crew) => {
+      // change tv series first_air_date to release_date to match with movies
+      let newJob = crew.map(({
+        first_air_date: release_date,
+        ...rest
+      }) => ({
+        release_date,
+        ...rest
+      }))
+  
+      // some series/movies missing release date
+      newJob.forEach((e) => {
+        if (!e.release_date) {
+          e.release_date = "1900-01-01";
+        }
+      })
+      const sortedJob = sortJobs(newJob)
+      return sortedJob
+    }
     const handledJobs = handleJobs(credits.crew)
+
     splitJobs(handledJobs)
     
     const handledCast = handleJobs(credits.cast)
     setCast(handledCast)
-  }, [credits, handleJobs])
+  }, [credits])
 
   return ( 
     <div className="details-person-credits">
