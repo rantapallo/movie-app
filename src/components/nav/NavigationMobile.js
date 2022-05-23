@@ -31,7 +31,10 @@ const NavigationMobile = () => {
     onClick={() => handleOpen()}
   />
 
-  const closeMobileMenu = () => setOpen(false);
+  const closeMobileMenu = () => {
+    setOpen(false)
+    document.body.classList.remove('no-scroll')
+  }
 
   return ( 
     <div className="mobile-navigation">

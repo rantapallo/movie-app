@@ -187,11 +187,14 @@ h2 {
   height: 3px;
   background-color: var(--color-bg2);
   margin: 5px;
-  transition: all 0.3s ease;
 }
 
 .navbar .mobile-navigation {
   display: none;
+}
+
+.mobile {
+  padding-top: 30px;
 }
 
 .hidden {
@@ -352,6 +355,12 @@ h2 {
   }
   h2 {
     text-align:center;
+    font-size: 20px;
+    text-align: left;
+  }
+
+  .list-item {
+    padding: 10px 40px;
   }
 
   .details-top {
