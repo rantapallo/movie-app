@@ -1,6 +1,6 @@
 import ListItem from './ListItem';
 
-const TopList = ({data, header}) => {
+const List = ({data, header}) => {
   return ( 
     <div className="section pd-tb25">
       <h2 className="list-header">{header}</h2>
@@ -11,4 +11,4 @@ const TopList = ({data, header}) => {
    );
 }
  
-export default TopList;
+export default List;

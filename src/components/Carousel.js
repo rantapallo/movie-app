@@ -35,10 +35,12 @@ export default function Carousel({data}) {
                 // tv
                 <Link to={`/tv/${item.id}`}>
                   <div className="carousel-image">
-                    <img 
-                      src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`}
-                      alt="not available"
-                    />
+                    {item.poster_path !== null ? 
+                      <img 
+                        src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`}
+                        alt="not available"
+                      />
+                    : 'not available'}
                   </div>
                   <p>{item.name}</p>
                 </Link>
@@ -47,10 +49,12 @@ export default function Carousel({data}) {
                   // movie
                   <Link to={`/movie/${item.id}`}>
                     <div className="carousel-image">
-                      <img 
-                        src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`}
-                        alt="not available"
-                      />
+                      {item.poster_path !== null ? 
+                        <img 
+                          src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`}
+                          alt="not available"
+                        />
+                      : 'not available'}
                     </div>
                     <p>{item.title}</p>
                   </Link>
@@ -58,10 +62,12 @@ export default function Carousel({data}) {
                   // person
                   <Link to={`/person/${item.id}`}>
                     <div className="carousel-image">
-                      <img 
-                        src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.profile_path}`}
-                        alt="not available"
-                      />
+                      {item.profile_path !== null ? 
+                        <img 
+                          src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.profile_path}`}
+                          alt="not available"
+                        />
+                      : 'not available'}
                     </div>
                     <p>{item.name}</p>
                     <p>as {item.character}</p>

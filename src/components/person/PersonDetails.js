@@ -3,11 +3,15 @@ import React from 'react'
 export default function PersonDetails({person}) {
   return (
     <div className='details-top pd40'>
-      <img 
-        className="profile-image"
-        alt="not available"
-        src={`https://www.themoviedb.org/t/p/w300_and_h450_face${person.profile_path}`}
-      />
+      <div className="person-image">
+        {person.profile_path !== null ? 
+          <img 
+            className="profile-image"
+            alt="not available"
+            src={`https://www.themoviedb.org/t/p/w300_and_h450_face${person.profile_path}`}
+          />
+        : 'not available'}
+      </div>
       <div className='details-text'>
       <h2>{person.name}</h2>
         <h4>Born: {person.birthday} in {person.place_of_birth}</h4>

@@ -31,10 +31,12 @@ export default function SearchItem({item}) {
     <Link to={`./${linkPath}/${item.id}`}>
       <div className='list-item'>
         <div className='list-image'>
-          <img 
-            src={`https://www.themoviedb.org/t/p/w94_and_h141_face${imagePath}`}
-            alt="not available"
-          />
+          {imagePath ? 
+            <img 
+              src={`https://www.themoviedb.org/t/p/w94_and_h141_face${imagePath}`}
+              alt="not available"
+            />
+          : 'not available'} 
         </div>
         <div className='list-text'>
           <h3>{name}</h3>

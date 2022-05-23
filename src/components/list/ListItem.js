@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const TopListItem = ({movie, index}) => {
+const ListItem = ({movie, index}) => {
   return ( 
     <>
       <Link to={`/${typeof movie.name !== 'undefined' ? 'tv' : 'movie'}/${movie.id}`}>
@@ -9,11 +9,13 @@ const TopListItem = ({movie, index}) => {
             <h2>{index+1}.</h2>
           </div>
           <div className="list-image">
+            {movie.poster_path !== null ? 
             <img 
               className="movie-poster-tiny"
               alt="not available"
               src={`https://www.themoviedb.org/t/p/w94_and_h141_face${movie.poster_path}`}
             />
+            : 'not available'}
           </div>
           <div className="list-text">
             <h2>{typeof movie.name !== 'undefined' ? movie.name : movie.title}</h2>
@@ -31,4 +33,4 @@ const TopListItem = ({movie, index}) => {
    )
 }
  
-export default TopListItem;
+export default ListItem;

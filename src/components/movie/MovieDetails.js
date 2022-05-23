@@ -5,10 +5,12 @@ export default function MovieDetails({movie, directors}) {
     <>
       <div className='details-top pd40'>
         <div className="carousel-image">
+          {movie.poster_path !== null ? 
           <img 
             alt="not available"
             src={`https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`}
           />
+          : 'not available'}
         </div>
         <div className='details-text'>
           <h2>{movie.title}</h2>

@@ -75,6 +75,19 @@ h2 {
   color: var(--color-two);
 }
 
+.person-image {
+  width: 300px;
+  min-width: 300px;
+  height: 450px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  background-color: var(--color-one);
+  color: var(--color-two);
+}
+
 .carousel-image:hover {
   color: var(--color-two);
 }
@@ -299,6 +312,17 @@ h2 {
 
 .providers {
   margin-top: 25px;
+}
+
+.providers-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.providers-card {
+  margin-right: 25px;
 }
 
 .footer {
