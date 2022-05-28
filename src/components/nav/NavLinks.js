@@ -5,7 +5,7 @@ const NavBarLinks = (props) => {
   return (
     <ul className={`navbar-links ${props.isMobile ? 'mobile' : ''}`}>
       <li onClick={() => props.isMobile && props.closeMobileMenu()}>
-        <Link to="/movie/top_rated">Top Rated</Link>
+        <Link to="/top_rated">Top Rated</Link>
       </li>
       <li onClick={() => props.isMobile && props.closeMobileMenu()}>
         <Link to="/trending">Trending</Link>

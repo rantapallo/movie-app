@@ -1,17 +1,58 @@
+import { useEffect, useState } from 'react';
 import List from '../components/list/List';
-import useFetch from '../util/useFetch';
 
 export default function TopRated() {
 
-  const apiKey = process.env.REACT_APP_APIKEY;
-  const { data: movies, isLoading: moviesIsLoading, moviesError} = useFetch('https://api.themoviedb.org/3/movie/top_rated?api_key='+apiKey);
+  const [optionValue, setOptionValue] = useState('movie')
+  const [data, setData] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
+  const [text, setText] = useState('movies')
+
+  const apiKey = process.env.REACT_APP_APIKEY
+  
+  const fetchData = async (val = null) => {
+    try {
+      setIsLoading(true)
+      let option = val ? val : optionValue
+      if (option === 'tv') {
+        setText('TV series')
+      } else {
+        setText('movies')
+      }
+      const res = await fetch(`https://api.themoviedb.org/3/${option}/top_rated?api_key=${apiKey}`)
+      const data = await res.json()
+      setIsLoading(false)
+      setData(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+
+  const toggleOption = (val) => {
+    setOptionValue(val)
+    fetchData(val)
+      
+  }
+
+  useEffect(() => {
+    fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
-    <div>
-      {moviesError && <div>{moviesError}</div>}
-      {moviesIsLoading && <div>Loading...</div>}
-      {movies && (
-        <List data={movies} type="Top rated movies" />
+    <div className='list'>
+      {/* {moviesError && <div>{moviesError}</div>} */}
+      {isLoading && <div>Loading...</div>}
+      {data && (
+        <>
+          <select className="list-select" value={optionValue} onChange={(e) => toggleOption(e.target.value)}>
+            <option value="movie">Movies</option>
+            <option value="tv">TV series</option>
+          </select>
+
+          <List data={data} header={`Top rated ${text}`} />
+        </>
       )}
     </div>
   )

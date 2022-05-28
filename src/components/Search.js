@@ -15,7 +15,9 @@ export default function Search() {
 
   const handleSearch = (e) => {
     e.preventDefault()
-    fetchData()
+    if (searchValue.trim() !== '') {
+      fetchData()
+    }
   }
 
   return (

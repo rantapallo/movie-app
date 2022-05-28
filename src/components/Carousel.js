@@ -70,7 +70,9 @@ export default function Carousel({data}) {
                       : 'not available'}
                     </div>
                     <p>{item.name}</p>
-                    <p>as {item.character}</p>
+                    {item.character &&
+                      <p>as {item.character}</p>
+                    }
                   </Link>
                 )
               )}

@@ -22,8 +22,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/upcoming" element={<Upcoming />} />
             <Route path="/trending" element={<Trending />} />
-            <Route path="/movie/top_rated" element={<TopRated />} />
-            <Route path="/tv/top_rated" element={<TopRated />} />
+            <Route path="/top_rated" element={<TopRated />} />
             <Route path="/movie/:id" element={<Movie />} />
             <Route path="/tv/:id" element={<Tv />} />
             <Route path="/person/:id" element={<Person />} />

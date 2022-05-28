@@ -45,9 +45,9 @@ export default function SearchItem({item}) {
               {item.known_for_department && <div>Known for {item.known_for_department}</div>}
               <p>{item.known_for?.map((movie) => (
                 <span key={movie.id}>
-                  {movie.media_type === 'movie' ? 
-                    <Link to={`./movie/${movie.id}`}>{movie.title}</Link> : 
-                    <Link to={`./tv/${movie.id}`}>{movie.name}</Link>
+                  &#9675; {movie.media_type === 'movie' ? 
+                    movie.title : 
+                    movie.id
                   }
                 </span>
               ))}

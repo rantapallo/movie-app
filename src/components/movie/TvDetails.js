@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
+import imdb from '../../images/imdb.png'
 
-export default function MovieDetails({movie, directors}) {
+export default function TvDetails({movie}) {
   return (
     <>
       <div className='details-top pd40'>
@@ -22,6 +23,14 @@ export default function MovieDetails({movie, directors}) {
             {movie.created_by.map(item => {
               return <h4 key={item.id}><Link to={`/person/${item.id}`}>{item.name}</Link></h4>
             })}
+            {movie.imdb_id &&
+              <a href={`https://www.imdb.com/title/${movie.imdb_id}`} target="_blank" rel="noreferrer">
+                <img 
+                  alt="IMDb"
+                  src={imdb}
+                />
+              </a>
+            }
           <div className="details-overview">{movie.overview}</div>
         </div>
       </div>

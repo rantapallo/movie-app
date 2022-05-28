@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import Carousel from '../components/Carousel';
 import MovieDetails from '../components/movie/MovieDetails';
 import Providers from '../components/movie/Providers';
+import VideoEmbed from '../components/movie/VideoEmbed';
 import useFetch from '../util/useFetch';
 
 export default function Movie() {
@@ -10,15 +11,32 @@ export default function Movie() {
   const apiKey = process.env.REACT_APP_APIKEY;
 
   const [directors, setDirectors] = useState([])
+  const [trailer, setTrailer] = useState('')
 
   const { data: movie, isLoading: movieIsLoading, error: movieError} = useFetch(
     `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&append_to_response=credits`
   )
   const { data: providers, isLoading: providersIsLoading, error: providersError} = useFetch(
     `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${apiKey}`
-  );
-
+  )
+  const { data: videos, isLoading: videosIsLoading, error: videosError} = useFetch(
+    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}`
+  )
+  //https://api.themoviedb.org/3/movie/${id}/similar?api_key=${apiKey}
+  //
   
+  useEffect(() => {
+    if (videos) {
+      
+      videos.results.some((video) => {
+        if (video.site === 'YouTube' && video.type === 'Trailer') {
+          setTrailer(video.key)
+          return true
+        }
+        return false
+      })
+    }
+  }, [videos])
 
   useEffect(() => {
     if (movie) {
@@ -43,6 +61,14 @@ export default function Movie() {
         <>
           <h1>Cast</h1>
           <Carousel data={movie.credits.cast} />
+        </>
+      )}
+      {videosIsLoading && <div>Loading...</div> }
+      {videosError && <div>{videosError}</div> }
+      {trailer && (
+        <>
+          <h1 className='pd-t25'>Trailer</h1>
+          <VideoEmbed id={trailer} />
         </>
       )}
       {providersIsLoading && <div>Loading...</div> }
