@@ -46,7 +46,6 @@ h2 {
 .App {
   max-width: 1280px;
   margin: 0 auto;
-  
 }
 
 .section {
@@ -171,8 +170,6 @@ h2 {
 
 .details-text {
   margin-left: 40px;
-  display: flex;
-  flex-direction: column;
 }
 
 .details-overview {
@@ -257,11 +254,6 @@ h2 {
   min-width: 300px;
 }
 
-.list-header {
-  padding-left: 40px;
-  padding-bottom: 15px;
-}
-
 .search-btn {
   margin-left: 10px;
   padding-bottom: 10px;
@@ -274,6 +266,11 @@ h2 {
 .search-btn svg {
   height: 30px;
   width: 30px;
+}
+
+.list-header {
+  padding-left: 40px;
+  padding-bottom: 15px;
 }
 
 .list-item {
@@ -358,8 +355,6 @@ h2 {
   position: absolute;
 }
 
-
-
 .footer {
   margin: 100px 0;
   width: 100%;
@@ -425,6 +420,10 @@ h2 {
     display: flex;
     right: 5%;
     cursor: pointer;
+  }
+
+  .section {
+    padding: 10px;
   }
 
   .mobile-navigation svg {

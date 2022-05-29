@@ -17,7 +17,7 @@ export default function Person() {
       {person && (
         <div>
           <PersonDetails person={person} />
-          {person && person.combined_credits.cast.length > 0 && (
+          {person && (
             <PersonCredits credits={person.combined_credits} />
           )}
         </div>

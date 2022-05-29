@@ -20,10 +20,12 @@ export default function TvDetails({movie}) {
           <h4>Release: {dateFormatter(movie.first_air_date)}</h4>
           {(movie.vote_average) ? 
             <h4>Rating: {movie.vote_average}/10</h4> : 'Rating: n/a'}
+            <h4>Episodes: {movie.number_of_seasons} seasons, {movie.number_of_episodes} episodes</h4>
             <h4>Created by:</h4>
             {movie.created_by.map(item => {
               return <h4 key={item.id}><Link to={`/person/${item.id}`}>{item.name}</Link></h4>
             })}
+            
             {movie.imdb_id &&
               <a href={`https://www.imdb.com/title/${movie.imdb_id}`} target="_blank" rel="noreferrer">
                 <img 

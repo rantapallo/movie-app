@@ -17,7 +17,6 @@ export default function Tv() {
 
   useEffect(() => {
     if (tv) {
-      
       tv.videos.results.some((video) => {
         if (video.site === 'YouTube' && video.type === 'Trailer') {
           setTrailer(video.key)
