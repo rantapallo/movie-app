@@ -1,4 +1,4 @@
-import tmdb from '../images/tmdb-logo.svg'
+import tmdb from '../../images/tmdb-logo.svg'
 
 export default function Footer() {
   return (

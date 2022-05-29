@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { dateFormatter } from '../../util/util'
 
 export default function SearchItem({item}) {
   const [name, setName] = useState('')
@@ -56,8 +57,8 @@ export default function SearchItem({item}) {
           ) : (
             <div>
               {item.media_type === 'movie' ? 
-              item.release_date && (<p>({item.release_date})</p>) :
-              item.first_air_date && (<p>(TV series {item.first_air_date})</p>)}
+              item.release_date && (<p>({dateFormatter(item.release_date)})</p>) :
+              item.first_air_date && (<p>TV series ({dateFormatter(item.first_air_date)})</p>)}
               <div className='list-overview'>{item.overview}</div>
             </div>
           )}

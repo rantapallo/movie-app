@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import {sortJobs} from "../../util/util";
 import PersonCreditList from "./PersonCreditList"
 
 export default function PersonCredits({credits}) {
@@ -9,15 +10,6 @@ export default function PersonCredits({credits}) {
   const [exproducer, setExproducer] = useState([])
   const [creator, setCreator] = useState([])
   const [cast, setCast] = useState([])
-    
-
-  function sortJobs (jobs) {
-    const sortedJobs = jobs.sort((a, b) => 
-    new Date(...b.release_date.split('/').reverse()) - new Date(...a.release_date.split('/').reverse()));
-    return sortedJobs
-  }
-
-
 
   const splitJobs = (sortedCrew) => {
     sortedCrew.forEach((job) => {

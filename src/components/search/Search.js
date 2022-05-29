@@ -17,6 +17,8 @@ export default function Search() {
     e.preventDefault()
     if (searchValue.trim() !== '') {
       fetchData()
+    } else {
+      setSearchResults([])
     }
   }
 

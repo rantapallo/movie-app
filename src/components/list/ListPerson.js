@@ -23,7 +23,6 @@ const ListPerson = ({person, index}) => {
               {person.known_for_department && <div>Known for {person.known_for_department}</div>}
               <p>{person.known_for?.map((item) => (
                 <span key={item.id}>
-                  
                   &#9675; {item.media_type === 'movie' ? 
                     item.title : 
                     item.name

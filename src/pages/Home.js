@@ -1,5 +1,5 @@
-import Carousel from '../components/Carousel';
-import Search from '../components/Search';
+import Carousel from '../components/carousel/Carousel';
+import Search from '../components/search/Search';
 import useFetch from '../util/useFetch'
 
 export default function Home() {

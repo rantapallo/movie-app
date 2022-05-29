@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
-import Carousel from '../components/Carousel';
+import Carousel from '../components/carousel/Carousel';
 import MovieDetails from '../components/movie/MovieDetails';
 import Providers from '../components/movie/Providers';
 import VideoEmbed from '../components/movie/VideoEmbed';
@@ -14,29 +14,8 @@ export default function Movie() {
   const [trailer, setTrailer] = useState('')
 
   const { data: movie, isLoading: movieIsLoading, error: movieError} = useFetch(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&append_to_response=credits`
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&append_to_response=credits,videos,watch/providers`
   )
-  const { data: providers, isLoading: providersIsLoading, error: providersError} = useFetch(
-    `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${apiKey}`
-  )
-  const { data: videos, isLoading: videosIsLoading, error: videosError} = useFetch(
-    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}`
-  )
-  //https://api.themoviedb.org/3/movie/${id}/similar?api_key=${apiKey}
-  //
-  
-  useEffect(() => {
-    if (videos) {
-      
-      videos.results.some((video) => {
-        if (video.site === 'YouTube' && video.type === 'Trailer') {
-          setTrailer(video.key)
-          return true
-        }
-        return false
-      })
-    }
-  }, [videos])
 
   useEffect(() => {
     if (movie) {
@@ -47,8 +26,17 @@ export default function Movie() {
         ))
       }
       listDirectors()
+      if (!trailer && movie.videos.results.length > 0) {
+        movie.videos.results.some((video) => {
+          if (video.site === 'YouTube' && video.type === 'Trailer') {
+            setTrailer(video.key)
+            return true
+          }
+          return false
+        })
+      }
     }
-  },[movie, directors])
+  },[movie, directors, trailer])
 
   return (
     <div className='details section'>
@@ -63,18 +51,14 @@ export default function Movie() {
           <Carousel data={movie.credits.cast} />
         </>
       )}
-      {videosIsLoading && <div>Loading...</div> }
-      {videosError && <div>{videosError}</div> }
       {trailer && (
         <>
           <h1 className='pd-t25'>Trailer</h1>
           <VideoEmbed id={trailer} />
         </>
       )}
-      {providersIsLoading && <div>Loading...</div> }
-      {providersError && <div>{providersError}</div> }
-      {providers && providers.results.hasOwnProperty('FI') && (
-        <Providers providers={providers} />
+      {movie && movie['watch/providers'] && movie['watch/providers'].results.hasOwnProperty('FI') && (
+        <Providers providers={movie['watch/providers']} />
       )}
     </div>
       

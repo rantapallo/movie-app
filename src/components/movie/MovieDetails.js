@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import imdb from '../../images/imdb.png'
+import { dateFormatter } from "../../util/util"
 
 export default function MovieDetails({movie, directors}) {
   return (
@@ -15,7 +16,7 @@ export default function MovieDetails({movie, directors}) {
         </div>
         <div className='details-text'>
           <h2>{movie.title}</h2>
-          <h4>Release year: {new Date(movie.release_date).getFullYear()}</h4>
+          <h4>Release: {dateFormatter(movie.release_date)}</h4>
           {(movie.vote_average) ? 
             <h4>Rating: {movie.vote_average}/10</h4> : 'Rating: n/a'}
             <h4>Directed by:</h4>

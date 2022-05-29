@@ -4,7 +4,7 @@ import {
   Route,
 } from "react-router-dom";
 import Nav from './components/nav/Nav';
-import Footer from './components/Footer';
+import Footer from './components/ui/Footer';
 import Home from './pages/Home';
 import Upcoming from './pages/Upcoming';
 import Trending from './pages/Trending';

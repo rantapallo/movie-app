@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { dateFormatter } from '../../util/util'
 
 const ListItem = ({movie, index}) => {
   return ( 
@@ -20,8 +21,8 @@ const ListItem = ({movie, index}) => {
           <div className="list-text">
             <h2>{typeof movie.name !== 'undefined' ? movie.name : movie.title}</h2>
             <h4>{typeof movie.name !== 'undefined' ? 
-              new Date(movie.first_air_date).getFullYear() : 
-              new Date(movie.release_date).getFullYear()}
+              dateFormatter(movie.first_air_date) :
+              dateFormatter(movie.release_date)}
             </h4>
             {movie.vote_average > 0 &&
               <h4>Rating {movie.vote_average}/10</h4>
